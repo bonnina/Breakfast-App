@@ -1,0 +1,1 @@
+A MERN app (MongoDB, Express, React, Redux/Redux-Saga, MaterialUI) to make breakfast orders.
