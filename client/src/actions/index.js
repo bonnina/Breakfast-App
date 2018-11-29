@@ -16,3 +16,18 @@ export const removeFromOrder = item => ({
 export const deleteOrder = () => ({
   type: 'DELETE_ORDER'
 })
+
+export const postOrder = formData => ({
+  type: 'POST_ORDER',
+  formData
+})
+
+export const postSuccess = result => ({
+  type: 'POST_SUCCESS',
+  result
+})
+
+export const postFailure = error => ({
+  type: 'POST_FAILURE',
+  error
+})
