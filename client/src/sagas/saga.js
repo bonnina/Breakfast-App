@@ -1,6 +1,6 @@
-import { takeLatest, select, retry, put } from "redux-saga/effects";
+import { takeLatest, select, call, put } from "redux-saga/effects";
 
-export const dataSelector = (state) => state.data;
+export const dataSelector = (state) => state.api.data;
 
 export function* watcher() {
   yield takeLatest("POST_ORDER", worker);
@@ -8,10 +8,10 @@ export function* watcher() {
 
 function* worker() {
   try {
-    const SECOND = 1000;
     const formData = yield select(dataSelector);
-    const response = yield retry(3, 5 * SECOND, (fetch, '/', { body: formData, method: 'POST' })); // yield call(fetch, '/', { body: formData, method: 'POST' });
-    const result = response.data.message;
+    const response = yield call(fetch, '/', { body: formData, method: 'POST' });
+    //yield retry(3, 5 * 1000, (fetch, '/', { body: formData, method: 'POST' })); 
+    const result = response;
 
     yield put({ type: "POST_SUCCESS", result });
   
