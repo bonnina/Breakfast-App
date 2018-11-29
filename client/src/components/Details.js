@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { FormControl, InputLabel, Input, Typography, Button } from '@material-ui/core';
 import styles from '../styles/detailStyles';
+import { postOrder, deleteOrder } from '../actions';
 
 const mapStateToProps = function (store) {
   return {
     order: store.order,
-    location: store.details.location
+    location: store.details.location,
+    success: store.api.success, 
+    error: store.api.error
   };
 };
 
@@ -24,15 +27,21 @@ class Details extends React.Component {
       'address': adr,
       'order': this.props.order.map(el => el.text)
      };
-   
+     this.props.postOrder(formData);
+     alert(this.props.error 
+      ? "An error occured. Please consider submitting our order via a phone call"
+      : "Your order was successfully added" 
+    )
+    this.props.deleteOrder();
   } 
 
   render() {
     const { classes } = this.props;
     const buttonStyles = {textTransform: 'lowercase', color: 'white', lineHeight: '0.7', marginLeft: '-6px'};
+    
     return (
       <div>
-        <Typography variant='h4'  className={classes.header} gutterBottom>
+        <Typography variant='h4' className={classes.header} gutterBottom>
         Order info:
         </Typography>
         <form className={classes.container} onSubmit={(e) => this.addOrder(e)} id='order'>
@@ -82,8 +91,8 @@ class Details extends React.Component {
           </FormControl>
           }
           </form>
-          <Button className={classes.button} type='submit' form='order'>
-            <Typography variant='h4' style={buttonStyles} className={classes.header}>
+          <Button className={classes.button} type='submit' form='order' >
+            <Typography variant='h4' style={buttonStyles} className={classes.header} >
               Confirm order
             </Typography>
           </Button>
@@ -93,5 +102,5 @@ class Details extends React.Component {
 }
 
 export default withStyles(styles)(
-  connect(mapStateToProps)(Details) 
+  connect(mapStateToProps, { postOrder, deleteOrder })(Details) 
 );
