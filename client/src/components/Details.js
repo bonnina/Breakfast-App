@@ -27,12 +27,16 @@ class Details extends React.Component {
       'address': adr,
       'order': this.props.order.map(el => el.text)
      };
+     
      this.props.postOrder(formData);
-     alert(this.props.error 
-      ? "An error occured. Please consider submitting our order via a phone call"
-      : "Your order was successfully added" 
+     this.props.deleteOrder();
+       alert("Thank you. Your order was added");
+     /*
+     alert(this.props.success 
+      ? "Your order was successfully added" 
+      : "An error occured. Please consider submitting our order via a phone call"
     )
-    this.props.deleteOrder();
+    */
   } 
 
   render() {
