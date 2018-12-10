@@ -6,6 +6,7 @@ const createError = require('http-errors');
 const path = require('path');
 const helmet = require('helmet');
 const mongoose = require("mongoose");
+const cors = require('cors');
 require('dotenv').config();
 const Order = require("./shema");
 
@@ -22,6 +23,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(helmet());
+app.use(cors());
+app.options(process.env.WHITELIST, cors()); 
 
 mongoose.connect(process.env.DATABASE, { useNewUrlParser: true });
 let db = mongoose.connection;
