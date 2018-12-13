@@ -3,6 +3,8 @@
 /client/node_modules
 /server/node_modules
 /server/.env
+/serverless-aws/node_modules
+/serverless-aws/secrets.json
 
 # testing
 /coverage
