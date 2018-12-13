@@ -3,9 +3,19 @@ const Schema = mongoose.Schema;
  
 const OrderSchema = new Schema(
   {
-    name: String,
-    time: Date,
-    address: String,
+    name: {
+      type: String,
+      required: [true, "Required!"],
+      maxlength: [20, "Too Long!"]
+    },
+    time: {
+      type: String,
+      required: [true, "Required!"]
+    },
+    address: {
+      type: String,
+      required: [true, "Required!"]
+    },
     order: [String]
   },
   { timestamps: true }
