@@ -14,4 +14,12 @@ router.post('/', async (req, res, next) => {
   res.status(200).send(order);
 })
 
+router.delete('/', async (req, res, next) => {
+  const order = await Order.remove({});
+
+  res.status(200).send(order);
+})
+
+
+
 module.exports = router
