@@ -22,15 +22,15 @@ class Details extends React.Component {
     this.props.location === 'delivery' ? adr = e.target.elements.address.value : adr = 'eat in';
     
     let formData = {
-      'name': e.target.elements.name.value,
-      'time': e.target.elements.time.value,
-      'address': adr,
-      'order': this.props.order.map(el => el.text)
+      "name": e.target.elements.name.value,
+      "time": e.target.elements.time.value,
+      "address": adr,
+      "order": this.props.order.map(el => el.text)
      };
      
      this.props.postOrder(formData);
+     alert("Thank you. Your order was added");
      this.props.deleteOrder();
-       alert("Thank you. Your order was added");
      /*
      alert(this.props.success 
       ? "Your order was successfully added" 
