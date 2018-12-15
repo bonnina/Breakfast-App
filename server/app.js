@@ -49,6 +49,18 @@ router.post("/", (req, res) => {
   });
 });
 
+router.get('/', async (req, res) => {
+  const orders = await Order.find();
+
+  res.status(200).send(orders);
+})
+
+router.delete('/', async (req, res, next) => {
+  const result = await Order.remove({});
+
+  res.status(200).send(result);
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
