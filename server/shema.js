@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const OrderSchema = new Schema(
   {
     name: String,
-    time: Date,
+    time: String,
     address: String,
     order: [String]
   },
