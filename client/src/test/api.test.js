@@ -4,13 +4,12 @@ const expect = chai.expect;
 const url = process.env.REACT_APP_BACKEND_URL;
 
 describe("Test API endpoints", function(){
-  it('Adds order to database', function(done) {
+  it('Adds order to database', function() {
     request.post(url, (err, res) => {
       console.log(res);
        expect(res.statusCode).to.equal(201);
        expect(response).to.have.property('name').with.lengthOf(1);
     });
-    done();
   });
 
   it('Fetches existing orders from database', function(done) {
@@ -29,7 +28,7 @@ describe("Test API endpoints", function(){
     
     await request.get(url, (req, res) => {
       expect(res.statusCode).to.equal(200);
-      expect(res.body).to.have.lengthOf(0);
+      expect(res.body).to.be.an('array').that.is.empty;
     });
     
     done();
