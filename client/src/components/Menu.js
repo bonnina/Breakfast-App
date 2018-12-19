@@ -85,7 +85,7 @@ class Menu extends React.Component {
               </ListItemIcon>
              </ListItem>
           </Link>
-          <ListItem button className={classes.listItem} onClick={this.handleClickOpen}>
+          <ListItem button id='del' className={classes.listItem} onClick={this.handleClickOpen}>
             <ListItemIcon className={classes.listIcon}> 
               <Delete />
             </ListItemIcon>
