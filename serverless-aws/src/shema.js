@@ -22,4 +22,6 @@ const OrderSchema = new Schema(
 );
 
 
-module.exports = mongoose.model("Order", OrderSchema);
+module.exports = (mongoose.models && mongoose.models.Order)
+                 ? mongoose.models.Order
+                 : mongoose.model('Order', OrderSchema)
